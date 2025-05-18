@@ -1,8 +1,17 @@
 import React from 'react'
+import Header from './components/Header'
+import { Route, Routes } from 'react-router-dom'
+import Homepage from './pages/Homepage'
 
 const App = () => {
   return (
-    <div className='w-full h-screen bg-pink-200 font-bold text-center text-2xl'>App</div>
+    <div className='w-full min-h-screen relative overflow-hidden'>
+      <Header />
+      <Routes>
+        <Route path='/' element={<Homepage/>} />
+      </Routes>
+    </div>
+
   ) 
 }
 
