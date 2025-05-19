@@ -146,3 +146,9 @@ html,body{
         color: var(--secondary);
     }
   }
+
+
+  .myTickerSwiper .swiper-wrapper {
+  transition-timing-function: linear !important;
+  -webkit-transition-timing-function: linear !important; /* For Safari/older Chrome */
+}

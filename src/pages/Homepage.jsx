@@ -11,6 +11,7 @@ import Corausal from '@/components/Corausal';
 import CategoryCard from '@/components/CategoryCard';
 import FeaturedCorausal from '@/components/FeaturedCorausal';
 import ProductCard from '@/components/ProductCard';
+import LogoScroller from '@/components/LogoScroller';
 
 const products = [
   {
@@ -144,12 +145,14 @@ const Homepage = () => {
        <div className='w-full py-10 space-y-4'>
         <h1 className='uppercase text-3xl text-primary font-semibold'>Product List</h1>
         <p className='text-sm text-primary '>There are many variations of passage of brand available</p>
-         <div className='w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4'>
+         <div className=' pt-4 w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4'>
           {products.map((product, index) => (
               <ProductCard product={product} key={index} />
           ))}
          </div>
       </div>
+      {/* logo scroller */}
+      <LogoScroller/>
     </div>
     
   )

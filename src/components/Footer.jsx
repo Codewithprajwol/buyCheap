@@ -138,7 +138,7 @@ const Footer = () => {
                             <div>
                                 <button
                                     type="submit"
-                                    className="w-full bg-orange-500 text-white font-semibold py-2.5 px-4 rounded-md hover:bg-orange-600 transition-colors duration-300 uppercase text-xs sm:text-sm"
+                                    className="w-full bg-orange-500 text-white font-semibold py-2.5 px-4 rounded-md hover:bg-orange-600 transition-colors duration-300 uppercase text-xs sm:text-sm cursor-pointer"
                                 >
                                     Submit Message
                                 </button>
@@ -150,7 +150,7 @@ const Footer = () => {
                 {/* Footer Bottom */}
                 <div className="text-center pt-6 sm:pt-8 border-t border-gray-200">
                     <p className="text-xs sm:text-sm text-gray-500">
-                        © {new Date().getFullYear()} SUBAS. All Rights Reserved. Designed by You!
+                        © {new Date().getFullYear()} Buy Cheap. All Rights Reserved. Designed by Buy Cheap!
                     </p>
                 </div>
             </div>
