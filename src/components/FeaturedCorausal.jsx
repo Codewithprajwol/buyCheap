@@ -1,16 +1,11 @@
-import React from 'react'
+import React, { useRef, useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation } from "swiper/modules";
+import { ArrowRight,ArrowLeft } from "lucide-react";
 
-// Import Swiper styles
 import "swiper/css";
-import "swiper/css/pagination";
 import "swiper/css/navigation";
-
-import { Autoplay, Pagination, Navigation } from "swiper/modules";
-import Corausal from '@/components/Corausal';
-import CategoryCard from '@/components/CategoryCard';
-import FeaturedCorausal from '@/components/FeaturedCorausal';
-import ProductCard from '@/components/ProductCard';
+import ProductCard from "./ProductCard";
 
 const products = [
   {
@@ -95,64 +90,73 @@ const products = [
   },
 ];
 
-const Homepage = () => {
+
+const FeaturedCorausal = () => {
+  const prevRef = useRef(null);
+  const nextRef = useRef(null);
+  const [swiperReady, setSwiperReady] = useState(false);
+
+  // Delay rendering swiper until refs are ready
+  useEffect(() => {
+    setSwiperReady(true);
+  }, []);
+
   return (
-    <div className='w-full max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 relative overflow-hidden'>
-      {/* corausal part  */}
-       <div className='w-full py-4 md:h-96'>
+    <div className="relative px-4 py-8">
+      {/* Custom Navigation Buttons */}
+    <div
+  ref={prevRef}
+  className="absolute z-10 left-2 top-1/2 -translate-y-1/2 w-10 h-10 border border-gray-300 flex items-center justify-center rounded-sm bg-white text-gray-500 hover:text-secondary hover:border-secondary cursor-pointer transition"
+>
+  <ArrowLeft className="w-5 h-5" />
+</div>
+
+
+<div
+  ref={nextRef}
+  className="absolute z-10 right-2 top-1/2 -translate-y-1/2 w-10 h-10 border border-gray-300 flex items-center justify-center rounded-sm bg-white text-gray-500 hover:text-secondary hover:border-secondary cursor-pointer transition"
+>
+  <ArrowRight className="w-5 h-5" />
+</div>
+
+
+      {swiperReady && (
         <Swiper
-          spaceBetween={30}
-          centeredSlides={true}
-          autoplay={{
-            delay: 5000,
-            disableOnInteraction: false,   // Keep autoplay even after user interaction
-            pauseOnMouseEnter: true,       // Optional: pause on hover for better UX
+          modules={[Navigation]}
+          spaceBetween={20}
+          slidesPerView={1}
+          navigation={{
+            prevEl: prevRef.current,
+            nextEl: nextRef.current,
           }}
-          pagination={{
-            clickable: true,
+          onInit={(swiper) => {
+            // Link navigation manually on init
+            swiper.params.navigation.prevEl = prevRef.current;
+            swiper.params.navigation.nextEl = nextRef.current;
+            swiper.navigation.init();
+            swiper.navigation.update();
           }}
-          navigation={true}
-          modules={[Autoplay, Pagination, Navigation]}
-          className="w-full h-full"
+          breakpoints={{
+            640: {
+              slidesPerView: 2,
+            },
+            768: {
+              slidesPerView: 3,
+            },
+            1024: {
+              slidesPerView: 4,
+            },
+          }}
         >
-           <SwiperSlide>
-            <Corausal/>
-          </SwiperSlide>
-           <SwiperSlide>
-            <Corausal/>
-          </SwiperSlide>
-           <SwiperSlide>
-            <Corausal/>
-          </SwiperSlide>
-        </Swiper>
-
-       </div>
-
-    {/* category part */}
-       <div className='w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 py-10'>
-         <CategoryCard bg="bg-[#FFF2E9]" title="Tablets" subTitle="Starting at $299" price="$299" />
-         <CategoryCard bg="bg-[#E8F2F4]" title="Smartphones" subTitle="Starting at $699" price="$699" />
-         <CategoryCard bg="bg-[#FDF5FA]" title="Laptops" subTitle="Starting at $999" price="$999" />
-       </div>
-    {/* featured Product part */}
-      <div className='w-full py-10'>
-        <h1 className='uppercase text-3xl text-primary font-semibold'>Featured Product</h1>
-        <p className='text-sm text-primary pt-2'>There are many variations of passage of brand available</p>
-        <FeaturedCorausal/>
-      </div>
-      {/* Product List page */}
-       <div className='w-full py-10 space-y-4'>
-        <h1 className='uppercase text-3xl text-primary font-semibold'>Product List</h1>
-        <p className='text-sm text-primary '>There are many variations of passage of brand available</p>
-         <div className='w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4'>
           {products.map((product, index) => (
-              <ProductCard product={product} key={index} />
+            <SwiperSlide key={index} className="py-2">
+              <ProductCard product={product} />
+            </SwiperSlide>
           ))}
-         </div>
-      </div>
+        </Swiper>
+      )}
     </div>
-    
-  )
-}
+  );
+};
 
-export default Homepage
+export default FeaturedCorausal;

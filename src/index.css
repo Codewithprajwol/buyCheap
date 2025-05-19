@@ -127,10 +127,9 @@ html,body{
   }
 }
 
-/* :root{
-    --primary:#3A5451;
-    --dropdown:#F4F5F5;
-    --secondary:#E8CB93;
+:root{
+    --primary:#575757;
+    --secondary:#FF7515;
 }
 
 @layer utilities{
@@ -139,4 +138,11 @@ html,body{
     }
     .bg-primary{
         background-color: var(--primary);
-    } */
+    }
+    .bg-secondary{
+        background-color: var(--secondary);
+    }
+    .text-secondary{
+        color: var(--secondary);
+    }
+  }
