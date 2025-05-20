@@ -1,93 +1,3 @@
-// import React, { useState } from "react";
-// import { Link, NavLink } from "react-router-dom";
-// import { Menu, X, Search, ShoppingCart, PhoneCall } from "lucide-react";
-
-// const Header = () => {
-//   const [menuOpen, setMenuOpen] = useState(false);
-
-//   const toggleMenu = () => setMenuOpen(!menuOpen);
-
-//   const navItems = [
-//     { name: "Home", to: "/" },
-//     { name: "Products", to: "/product/1" },
-//     {name:"categories", to:"/categories"},
-//     { name: "About Us", to: "/about" },
-//     // { name: "Contact", to: "/contact" },
-//   ];
-
-//   return (
-//     <header className="w-full drop-shadow-md bg-white">
-//       <div className="w-full max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-16">
-//         {/* Logo */}
-//         <div className="flex items-center space-x-2">
-//           {/* <img src="/logo.svg" alt="Logo" className="h-6 w-auto" /> */}
-//           <span className="text-xl font-semibold text-gray-700">Buy Cheap</span>
-//         </div>
-
-//         {/* Nav Links - Desktop */}
-//         <nav className="hidden sm:flex space-x-6 text-gray-700 text-sm">
-//           {navItems.map((item) => (
-//             <NavLink
-//               key={item.name}
-//               to={item.to}
-//               className={({ isActive }) =>
-//                 isActive
-//                   ? "text-orange-500"
-//                   : "hover:text-orange-500 transition-colors"
-//               }
-//             >
-//               {item.name}
-//             </NavLink>
-//           ))}
-//         </nav>
-
-//         {/* Right Icons */}
-//         <div className="flex items-center space-x-4">
-//         <div className="relative">
-//               <input
-//                 type="text"
-//                 placeholder="Search for products, brands and more..."
-//                 className="pl-10 pr-5 py-2 rounded-full border border-gray-300 placeholder:text-sm focus:outline-none focus:border-orange-500 text-sm shadow-sm transition-all duration-200 w-44 md:w-64 bg-gray-50"
-//               />
-//               <Search className="w-5 h-5 text-gray-400 absolute left-3 top-1/2 transform -translate-y-1/2 pointer-events-none" />
-//             </div>
-//           <div className="h-5 border-l border-orange-500"></div>
-//             <Link to="/contact"><PhoneCall className="w-5 h-5 text-gray-700 cursor-pointer" /></Link>
-//           {/* Hamburger - Mobile only */}
-//           <button
-//             onClick={toggleMenu}
-//             className="sm:hidden text-gray-700 focus:outline-none ml-2"
-//           >
-//             {menuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-//           </button>
-//         </div>
-//       </div>
-
-//       {/* Mobile Menu */}
-//       {menuOpen && (
-//         <div className="sm:hidden bg-white px-4 pb-4 space-y-2">
-//           {navItems.map((item) => (
-//             <NavLink
-//               key={item.name}
-//               to={item.to}
-//               onClick={() => setMenuOpen(false)}
-//               className={({ isActive }) =>
-//                 isActive
-//                   ? "block text-orange-500 font-medium"
-//                   : "block text-gray-700 font-medium hover:text-orange-500"
-//               }
-//             >
-//               {item.name}
-//             </NavLink>
-//           ))}
-//         </div>
-//       )}
-//     </header>
-//   );
-// };
-
-// export default Header;
-
 import React, { useState, useRef } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { Menu, X, Search, ShoppingCart, PhoneCall, ChevronDown } from "lucide-react";
@@ -133,14 +43,11 @@ const megaMenuData = [
 ];
 
 const Header = () => {
-  const [menuOpen, setMenuOpen] = useState(false);
   const [megaOpen, setMegaOpen] = useState(false);
   const [mobileSearchOpen, setMobileSearchOpen] = useState(false);
   const megaTimeout = useRef();
 
   const toggleSearch = () => setMobileSearchOpen(!mobileSearchOpen);
-
-  const toggleMenu = () => setMenuOpen(!menuOpen);
 
   const navItems = [
     { name: "Home", to: "/" },
@@ -169,7 +76,9 @@ const Header = () => {
           >
             {menuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button> */}
-          <SideBar/>  
+          <div className="lg:hidden">
+          <SideBar />  
+          </div>
         {/* Logo */}
         <div className="flex items-center space-x-2">
           {/* <img src="/logo.svg" alt="Logo" className="h-6 w-auto" /> */}
@@ -254,7 +163,8 @@ const Header = () => {
             <input
               type="text"
               placeholder="Search for products, brands and more..."
-             className={`pl-10 ${mobileSearchOpen ? "opacity-100 translate-y-0 pointer-events-auto visible" : "opacity-0 -translate-y-2 pointer-events-none invisible"} sm:visible sm:opacity-100 sm:translate-y-0 absolute sm:static top-[100%] left-0 pr-2 py-2 sm:rounded-full border border-gray-300 placeholder:text-sm focus:outline-none focus:border-orange-500 text-sm shadow-sm transition-all duration-200 w-full md:w-64 bg-white/20 backdrop-blur-md backdrop-saturate-150`}
+             className={`pl-10 ${mobileSearchOpen ? "opacity-100 translate-y-0 pointer-events-auto visible" : "opacity-0 -translate-y-2 pointer-events-none invisible"} sm:visible sm:opacity-100 sm:translate-y-0 
+             sm:pointer-events-auto absolute sm:static top-[100%] left-0 pr-2 py-2 sm:rounded-full border border-gray-300 placeholder:text-[12px] focus:outline-none focus:border-orange-500 text-sm shadow-sm transition-all duration-200 w-full md:w-64 bg-white/20 backdrop-blur-md backdrop-saturate-150`}
             />
             <Search onClick={toggleSearch} className="w-5 h-5 cursor-pointer text-gray-400 sm:absolute  left-3 top-1/2 transform sm:-translate-y-1/2 sm:pointer-events-none" />
           </div>
@@ -266,25 +176,7 @@ const Header = () => {
         </div>
       </div>
 
-      {/* Mobile Menu */}
-      {menuOpen && (
-        <div className="sm:hidden bg-white px-4 pb-4 space-y-2">
-          {navItems.map((item) => (
-            <NavLink
-              key={item.name}
-              to={item.to}
-              onClick={() => setMenuOpen(false)}
-              className={({ isActive }) =>
-                isActive
-                  ? "block text-orange-500 font-medium"
-                  : "block text-gray-700 font-medium hover:text-orange-500"
-              }
-            >
-              {item.name}
-            </NavLink>
-          ))}
-        </div>
-      )}
+      
     </header>
   );
 };
