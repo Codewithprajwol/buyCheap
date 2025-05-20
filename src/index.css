@@ -148,7 +148,11 @@ html,body{
   }
 
 
-  .myTickerSwiper .swiper-wrapper {
+  .swiper-wrapper {
+  transition-timing-function: ease-in-out !important;
+  /* -webkit-transition-timing-function: ease-in-out !important; For Safari/older Chrome */
+}
+
+.myTickerSwiper .swiper-wrapper {
   transition-timing-function: linear !important;
-  -webkit-transition-timing-function: linear !important; /* For Safari/older Chrome */
 }

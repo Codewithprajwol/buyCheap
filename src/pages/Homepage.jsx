@@ -115,6 +115,7 @@ const Homepage = () => {
           navigation={true}
           modules={[Autoplay, Pagination, Navigation]}
           className="w-full h-full"
+          speed={1500}
         >
            <SwiperSlide>
             <Corausal/>
@@ -141,7 +142,7 @@ const Homepage = () => {
         <p className='text-sm text-primary pt-2'>There are many variations of passage of brand available</p>
         <FeaturedCorausal/>
       </div>
-      {/* Product List page */}
+      {/* Product List page
        <div className='w-full py-10 space-y-4'>
         <h1 className='uppercase text-3xl text-primary font-semibold'>Product List</h1>
         <p className='text-sm text-primary '>There are many variations of passage of brand available</p>
@@ -150,7 +151,7 @@ const Homepage = () => {
               <ProductCard product={product} key={index} />
           ))}
          </div>
-      </div>
+      </div> */}
       {/* logo scroller */}
       <LogoScroller/>
     </div>

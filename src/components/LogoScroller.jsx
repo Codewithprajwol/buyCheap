@@ -115,12 +115,12 @@ const LogoScroller = () => {
           loop={true}
           slidesPerView={'auto'} // Important for continuous scroll with varying item widths
           spaceBetween={50}      // Adjust space between logos
-          speed={5000}           // Very long speed for the entire set to pass slowly
+          speed={8000}           // Very long speed for the entire set to pass slowly
                                  // Adjust this value: higher = slower, lower = faster
           autoplay={{
             delay: 1,          // Almost no delay, effectively continuous
-            disableOnInteraction: true, // Autoplay continues even if user interacts
-            pauseOnMouseEnter: true,    // Optional: Pauses when mouse is over slider
+            disableOnInteraction: false, // Autoplay continues even if user interacts
+            pauseOnMouseEnter: false,    // Optional: Pauses when mouse is over slider
           }}
           grabCursor={false} // Usually false for a ticker
           allowTouchMove={false} // Disable manual touch swiping for pure ticker
@@ -138,7 +138,7 @@ const LogoScroller = () => {
                 <img
                   src={logo.src}
                   alt={logo.alt}
-                  className="max-h-8 sm:max-h-10 md:max-h-12 object-cover" // Slightly adjusted max height for ticker
+                  className="max-h-10 sm:max-h-13 md:max-h-16 object-cover" // Slightly adjusted max height for ticker
                 />
               </div>
             </SwiperSlide>

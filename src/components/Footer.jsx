@@ -2,25 +2,7 @@ import React from 'react';
 import { Facebook, Twitter, Rss, Mail } from 'lucide-react'; // Using Mail as a substitute for Google Plus
 
 // You can define your link data here or pass it as props
-const shippingLinks = [
-    { name: 'New Products', href: '#' },
-    { name: 'Discount Products', href: '#' },
-    { name: 'Best Sell Products', href: '#' },
-    { name: 'Popular Products', href: '#' },
-    { name: 'Manufacturers', href: '#' },
-    { name: 'Suppliers', href: '#' },
-    { name: 'Special Products', href: '#' },
-];
 
-const accountLinks = [
-    { name: 'My Account', href: '#' },
-    { name: 'My Wishlist', href: '#' },
-    { name: 'My Cart', href: '#' },
-    { name: 'Sign In', href: '#' },
-    { name: 'Registration', href: '#' },
-    { name: 'Check out', href: '#' },
-    { name: 'Order Complete', href: '#' },
-];
 
 const Footer = () => {
     const handleSubmit = (e) => {
@@ -39,10 +21,10 @@ const Footer = () => {
 
     return (
         <footer className="bg-gray-50 pt-12 md:pt-16 pb-8 border-t border-gray-200">
-            <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 mb-10 md:mb-12">
+            <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 mb-10 md:mb-12">
                     {/* About Column - Spanning more on larger screens for balance */}
-                    <div className="lg:col-span-4 md:col-span-2"> {/* md:col-span-2 makes it full width on medium */}
+                    <div className=""> {/* md:col-span-2 makes it full width on medium */}
                         {/* Replace with your actual logo */}
                         <img src="https://i.imgur.com/K185K6w.png" alt="SUBAS Logo" className="h-9 sm:h-10 mb-5 sm:mb-6" />
                         <p className="text-gray-600 text-sm mb-4 leading-relaxed">
@@ -67,42 +49,9 @@ const Footer = () => {
                         </div>
                     </div>
 
-                    {/* Shipping Links Column */}
-                    <div className="lg:col-span-2 md:col-span-1">
-                        <h4 className="text-base sm:text-lg font-semibold text-gray-800 mb-4 sm:mb-5 relative pl-3">
-                            <span className="absolute left-0 top-1/2 transform -translate-y-1/2 w-1 h-4 bg-orange-500"></span>
-                            Shipping
-                        </h4>
-                        <ul className="space-y-2 sm:space-y-2.5">
-                            {shippingLinks.map((link) => (
-                                <li key={link.name}>
-                                    <a href={link.href} className="text-sm text-gray-600 hover:text-orange-500 transition-colors duration-300 before:content-['•'] before:mr-2 before:text-gray-400">
-                                        {link.name}
-                                    </a>
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
-
-                    {/* My Account Links Column */}
-                    <div className="lg:col-span-2 md:col-span-1">
-                        <h4 className="text-base sm:text-lg font-semibold text-gray-800 mb-4 sm:mb-5 relative pl-3">
-                            <span className="absolute left-0 top-1/2 transform -translate-y-1/2 w-1 h-4 bg-orange-500"></span>
-                            My Account
-                        </h4>
-                        <ul className="space-y-2 sm:space-y-2.5">
-                            {accountLinks.map((link) => (
-                                <li key={link.name}>
-                                    <a href={link.href} className="text-sm text-gray-600 hover:text-orange-500 transition-colors duration-300 before:content-['•'] before:mr-2 before:text-gray-400">
-                                        {link.name}
-                                    </a>
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
 
                     {/* Get in Touch Column */}
-                    <div className="lg:col-span-4 md:col-span-2"> {/* md:col-span-2 makes it full width on medium */}
+                    <div className=""> {/* md:col-span-2 makes it full width on medium */}
                         <h4 className="text-base sm:text-lg font-semibold text-gray-800 mb-4 sm:mb-5 relative pl-3">
                             <span className="absolute left-0 top-1/2 transform -translate-y-1/2 w-1 h-4 bg-orange-500"></span>
                             Get In Touch
