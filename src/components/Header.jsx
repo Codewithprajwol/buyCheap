@@ -91,6 +91,7 @@
 import React, { useState, useRef } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { Menu, X, Search, ShoppingCart, PhoneCall, ChevronDown } from "lucide-react";
+import SideBar from "./SideBar";
 
 const megaMenuData = [
   {
@@ -162,12 +163,13 @@ const Header = () => {
     <header className="w-full drop-shadow-md bg-white sticky top-0 left-0 z-50">
       <div className="w-full max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-16 ">
         {/* Hamburger - Mobile only */}
-          <button
+          {/* <button
             onClick={toggleMenu}
             className="lg:hidden text-gray-700 focus:outline-none ml-2 cursor-pointer"
           >
             {menuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </button>
+          </button> */}
+          <SideBar/>  
         {/* Logo */}
         <div className="flex items-center space-x-2">
           {/* <img src="/logo.svg" alt="Logo" className="h-6 w-auto" /> */}
@@ -252,7 +254,7 @@ const Header = () => {
             <input
               type="text"
               placeholder="Search for products, brands and more..."
-             className={`pl-10 ${mobileSearchOpen ? "opacity-100 translate-y-0 pointer-events-auto visible" : "opacity-0 -translate-y-2 pointer-events-none invisible"} absolute sm:static top-[100%] left-0 pr-2 py-2 sm:rounded-full border border-gray-300 placeholder:text-sm focus:outline-none focus:border-orange-500 text-sm shadow-sm transition-all duration-200 w-full md:w-64 bg-white/20 backdrop-blur-md backdrop-saturate-150`}
+             className={`pl-10 ${mobileSearchOpen ? "opacity-100 translate-y-0 pointer-events-auto visible" : "opacity-0 -translate-y-2 pointer-events-none invisible"} sm:visible sm:opacity-100 sm:translate-y-0 absolute sm:static top-[100%] left-0 pr-2 py-2 sm:rounded-full border border-gray-300 placeholder:text-sm focus:outline-none focus:border-orange-500 text-sm shadow-sm transition-all duration-200 w-full md:w-64 bg-white/20 backdrop-blur-md backdrop-saturate-150`}
             />
             <Search onClick={toggleSearch} className="w-5 h-5 cursor-pointer text-gray-400 sm:absolute  left-3 top-1/2 transform sm:-translate-y-1/2 sm:pointer-events-none" />
           </div>
