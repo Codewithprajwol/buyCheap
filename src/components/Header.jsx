@@ -2,6 +2,8 @@ import React, { useState, useRef } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { Menu, X, Search, ShoppingCart, PhoneCall, ChevronDown } from "lucide-react";
 import SideBar from "./SideBar";
+import { useTranslation } from "react-i18next";
+import LanguageDropDown from "./LanguageDropDown";
 
 const megaMenuData = [
   {
@@ -46,7 +48,7 @@ const Header = () => {
   const [megaOpen, setMegaOpen] = useState(false);
   const [mobileSearchOpen, setMobileSearchOpen] = useState(false);
   const megaTimeout = useRef();
-
+  
   const toggleSearch = () => setMobileSearchOpen(!mobileSearchOpen);
 
   const navItems = [
@@ -54,7 +56,6 @@ const Header = () => {
     { name: "Products", to: "/product/1" },
     { name: "categories", to: "/categories" },
     { name: "About Us", to: "/about" },
-    // { name: "Contact", to: "/contact" },
   ];
 
   // Only show mega menu for desktop
@@ -169,9 +170,7 @@ const Header = () => {
             <Search onClick={toggleSearch} className="w-5 h-5 cursor-pointer text-gray-400 sm:absolute  left-3 top-1/2 transform sm:-translate-y-1/2 sm:pointer-events-none" />
           </div>
           <div className="h-5 border-l border-orange-500"></div>
-          <Link to="/contact">
-            <PhoneCall className="w-5 h-5 text-gray-700 cursor-pointer" />
-          </Link>
+          <LanguageDropDown />
           
         </div>
       </div>

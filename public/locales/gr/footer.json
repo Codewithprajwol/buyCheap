@@ -1,0 +1,22 @@
+{
+  "about": {
+    "description1": "Το Lorem Ipsum είναι απλά ένα τυχαίο κείμενο της τυπογραφικής και εκτυπωτικής βιομηχανίας. Το Lorem Ipsum είναι το πρότυπο ψεύτικο κείμενο της βιομηχανίας subas από τη δεκαετία του 1500.",
+    "description2": "Όταν ένας άγνωστος εκτυπωτής πήρε μια σειρά από τυπογραφικά στοιχεία και αν πρόκειται να χρησιμοποιήσετε ένα απόσπασμα από το Lorem Ipsum το ανακάτεψε για να δημιουργήσει."
+  },
+  "socialLabels": {
+    "facebook": "Facebook",
+    "contact": "Επικοινωνία / Κοινοποίηση",
+    "twitter": "Twitter",
+    "rss": "RSS"
+  },
+  "getInTouch": {
+    "title": "Επικοινωνήστε μαζί μας",
+    "namePlaceholder": "Το όνομά σας εδώ...",
+    "emailPlaceholder": "Το email σας εδώ...",
+    "messagePlaceholder": "Το μήνυμά σας εδώ...",
+    "submitButton": "Αποστολή Μηνύματος"
+  },
+  "footerBottom": {
+    "copyright": "© {{year}} Buy Cheap. Όλα τα δικαιώματα διατηρούνται. Σχεδιασμένο από το Buy Cheap!"
+  }
+}
