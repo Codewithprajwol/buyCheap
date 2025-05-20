@@ -96,6 +96,30 @@ const products = [
   },
 ];
 
+const categoryData = [
+  {
+    bg: "bg-[#FFF2E9]",
+    title: "Tablets",
+    subTitle: "Latest tablets for work and play",
+    price: "$299",
+    img: "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=400&q=80"
+  },
+  {
+    bg: "bg-[#E8F2F4]",
+    title: "Smartphones",
+    subTitle: "Top smartphones of 2024",
+    price: "$699",
+    img: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=400&q=80"
+  },
+  {
+    bg: "bg-[#FDF5FA]",
+    title: "Laptops",
+    subTitle: "Powerful laptops for everyone",
+    price: "$999",
+    img: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=400&q=80"
+  }
+];
+
 const Homepage = () => {
   return (
     <div className='w-full max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 relative overflow-hidden'>
@@ -131,13 +155,20 @@ const Homepage = () => {
        </div>
 
     {/* category part */}
-       <div className='w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 py-10'>
-         <CategoryCard bg="bg-[#FFF2E9]" title="Tablets" subTitle="Starting at $299" price="$299" />
-         <CategoryCard bg="bg-[#E8F2F4]" title="Smartphones" subTitle="Starting at $699" price="$699" />
-         <CategoryCard bg="bg-[#FDF5FA]" title="Laptops" subTitle="Starting at $999" price="$999" />
-       </div>
+      <div className='w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 py-10'>
+        {categoryData.map((cat, idx) => (
+          <CategoryCard
+            key={cat.title}
+            bg={cat.bg}
+            title={cat.title}
+            subTitle={cat.subTitle}
+            price={cat.price}
+            img={cat.img}
+          />
+        ))}
+      </div>
     {/* featured Product part */}
-      <div className='w-full py-10'>
+      <div className='w-full '>
         <h1 className='uppercase text-3xl text-primary font-semibold'>Featured Product</h1>
         <p className='text-sm text-primary pt-2'>There are many variations of passage of brand available</p>
         <FeaturedCorausal/>

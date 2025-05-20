@@ -183,7 +183,8 @@ const Productpage = () => {
               </button>
             </div>
           </div>
-          <h2 className="text-lg font-bold text-gray-700 mb-4 border-l-4 border-orange-500 pl-2 tracking-wide flex items-center">
+          <div className='border border-white rounded-lg p-4 bg-white/20 backdrop-blur-md backdrop-saturate-150'>
+            <h2 className="text-lg font-bold text-gray-700 mb-4 border-l-4 border-orange-500 pl-2 tracking-wide flex items-center">
             <span className="text-orange-500 mr-2">|</span> CATEGORIES
           </h2>
           <ul className="space-y-2">
@@ -230,6 +231,7 @@ const Productpage = () => {
               </li>
             ))}
           </ul>
+          </div>
         </aside>
 
         {/* Main Product Controls + Grid/List */}
@@ -247,12 +249,12 @@ const Productpage = () => {
           </div>
           {/* ...rest of your controls and product grid/list... */}
           {/* Controls */}
-          <div className="flex flex-col  md:flex-row md:items-center justify-between gap-4  border border-gray-100 rounded-lg px-4 py-3 mb-8">
+          <div className="flex flex-col  md:flex-row md:items-center justify-between gap-4  border border-white rounded-lg px-4 py-3 mb-8">
             {/* View, Sort, Showing */}
             <div className="flex  flex-wrap items-center gap-3 w-full  justify-between">
               <div className="flex items-center gap-1">
                 <button
-                  className={`p-1 ${view === 'grid' ? 'text-orange-500' : 'text-gray-400'}`}
+                  className={`p-1 ${view === 'grid' ? 'text-orange-500' : 'text-gray-400'} cursor-pointer`}
                   onClick={() => setView('grid')}
                   aria-label="Grid view"
                 >
@@ -264,7 +266,7 @@ const Productpage = () => {
                   </svg>
                 </button>
                 <button
-                  className={`p-1 ${view === 'list' ? 'text-orange-500' : 'text-gray-400'}`}
+                  className={`p-1 ${view === 'list' ? 'text-orange-500' : 'text-gray-400'} cursor-pointer`}
                   onClick={() => setView('list')}
                   aria-label="List view"
                 >

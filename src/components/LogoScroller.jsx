@@ -20,16 +20,18 @@ const logosData = [
     { id: 12, src: '/brandImg/brand_6.png', alt: 'LG (copy 1)' },
 ];
 
+const repeatedLogos = [...logosData, ...logosData, ...logosData];
 
 const LogoScroller = () => {
   return (
-    <div className="bg-white py-8 sm:py-12 overflow-hidden"> {/* Added overflow-hidden to container */}
+    <div className="bg-transparent py-4 sm:py-12 overflow-hidden"> {/* Added overflow-hidden to container */}
       <div className="container mx-auto px-4">
         <Swiper
           modules={[Autoplay]}
           loop={true}
+          loopedSlides={repeatedLogos.length} // Ensures smooth looping
           slidesPerView={'auto'} // Important for continuous scroll with varying item widths
-          spaceBetween={50}      // Adjust space between logos
+          spaceBetween={5}      // Adjust space between logos
           speed={8000}           // Very long speed for the entire set to pass slowly
                                  // Adjust this value: higher = slower, lower = faster
           autoplay={{
@@ -41,7 +43,7 @@ const LogoScroller = () => {
           allowTouchMove={false} // Disable manual touch swiping for pure ticker
           className="myTickerSwiper" // Custom class for CSS targeting
         >
-          {logosData.map((logo, index) => (
+          {repeatedLogos.map((logo, index) => (
             <SwiperSlide
               key={`${logo.id}-${index}`}
               // For 'auto' slidesPerView, slides should have their width determined by content or set explicitly.

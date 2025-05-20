@@ -8,7 +8,12 @@ import Productpage from './pages/Productpage'
 
 const App = () => {
   return (
-    <div className='w-full min-h-screen relative '>
+    <div
+      className='w-full min-h-screen relative'
+      style={{
+        background: 'linear-gradient(120deg, #fdf6e3 0%, #ffe9ec 50%, #e3f6fd 100%)'
+      }}
+    >
       <Header />
       <Routes>
         <Route path='/' element={<Homepage/>} />
@@ -17,7 +22,6 @@ const App = () => {
       <Footer/>
       <CookiePopup/>
     </div>
-
   ) 
 }
 
