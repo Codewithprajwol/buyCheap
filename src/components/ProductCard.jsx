@@ -1,5 +1,4 @@
 import React from 'react'
-import { ShoppingCart } from 'lucide-react'
 
 const ProductCard = ({ product }) => {
   return (
@@ -19,14 +18,6 @@ const ProductCard = ({ product }) => {
             {product.Label}
           </span>
         )}
-
-        {/* Add to Cart Button */}
-        <button
-          className="absolute bottom-2 right-2 bg-green-600 text-white p-2 rounded-full hover:bg-green-700 transition"
-          title="Add to Cart"
-        >
-          <ShoppingCart className='cursor-pointer' size={18} />
-        </button>
       </div>
 
       {/* Product Info */}
