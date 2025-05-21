@@ -1,10 +1,8 @@
-// src/components/LogoScroller.jsx
 import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay } from 'swiper/modules';
 import 'swiper/css';
 
-// Your existing logosData
 const logosData = [
     { id: 1, src: '/brandImg/brand_1.png', alt: 'Dell' },
     { id: 2, src: '/brandImg/brand_2.png', alt: 'Asus' },

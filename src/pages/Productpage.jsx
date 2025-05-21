@@ -1,7 +1,6 @@
-// ...existing imports and arrays...
+import GridProductCard from '@/components/GridProductCard';
 import React, { useState,useEffect } from 'react';
 
-// Example product data (replace with your API/data source)
 const products = [
   {
     sku: "sku-123",
@@ -77,7 +76,6 @@ const Productpage = () => {
   const [highlightedSub, setHighlightedSub] = useState(null);
   const [breadcrumb, setBreadcrumb] = useState(['Home']);
 
-  // --- Auto-open category & highlight subcategory on search ---
   useEffect(() => {
     if (!search) return; // Only run on search
     let found = false;
@@ -102,28 +100,24 @@ const Productpage = () => {
     if (!found) setBreadcrumb(['Home', `Search: "${search}"`]);
   }, [search]);
 
-  // --- Manual category click: update breadcrumb and highlight ---
   const handleCategoryClick = (cat, idx) => {
     setOpenCategory(openCategory === idx ? null : idx);
     setHighlightedSub(null);
     setBreadcrumb(['Home', cat.name]);
-    setSearch(''); // clear search so manual click takes over
+    setSearch(''); 
   };
 
-  // --- Manual subcategory click: update breadcrumb and highlight ---
   const handleSubClick = (cat, sub) => {
     setHighlightedSub(sub);
     setBreadcrumb(['Home', cat.name, sub]);
-    setSearch(''); // clear search so manual click takes over
+    setSearch('');
   };
 
-  // --- Filtered products for search ---
   let filteredProducts = products.filter(p =>
     p.name.toLowerCase().includes(search.toLowerCase()) ||
     p.category.toLowerCase().includes(search.toLowerCase())
   );
 
-  // --- Sorting logic (unchanged) ---
   if (sort === "Price: Low to High") {
     filteredProducts = [...filteredProducts].sort((a, b) => {
       const aMin = Math.min(...a.prices.map(p => parseFloat(p.price)));
@@ -142,8 +136,6 @@ const Productpage = () => {
     <div className="max-w-screen-2xl pt-5 w-full mx-auto relative px-2 sm:px-4 lg:px-8 overflow-hidden">
       {/* Header Section */}
       <section className="w-full min-h-[300px] bg-gray-50 flex flex-col items-center justify-center relative overflow-hidden">
-        {/* ...existing header code... */}
-
         <img
           src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1200&q=80"
           alt="Product Grid"
@@ -183,7 +175,7 @@ const Productpage = () => {
               </button>
             </div>
           </div>
-          <div className='border border-white rounded-lg p-4 bg-white/20 backdrop-blur-md backdrop-saturate-150'>
+          <div className='border border-white rounded-lg md:mt-10 p-4 bg-white backdrop-blur-md backdrop-saturate-150'>
             <h2 className="text-lg font-bold text-gray-700 mb-4 border-l-4 border-orange-500 pl-2 tracking-wide flex items-center">
             <span className="text-orange-500 mr-2">|</span> CATEGORIES
           </h2>
@@ -247,7 +239,6 @@ const Productpage = () => {
               ))}
             </nav>
           </div>
-          {/* ...rest of your controls and product grid/list... */}
           {/* Controls */}
           <div className="flex flex-col  md:flex-row md:items-center justify-between gap-4  border border-white rounded-lg px-4 py-3 mb-8">
             {/* View, Sort, Showing */}
@@ -304,78 +295,7 @@ const Productpage = () => {
             }
           >
             {filteredProducts.map((product) => (
-              <div
-                key={product.sku}
-                className={
-                  view === 'grid'
-                    ? "bg-white border border-gray-100 rounded-lg flex flex-col overflow-hidden shadow-sm hover:shadow-lg transition"
-                    : "bg-white border border-gray-100 rounded-lg flex flex-col md:flex-row overflow-hidden shadow-sm hover:shadow-lg transition"
-                }
-              >
-                {/* Product Image */}
-                <div
-                  className={
-                    view === 'grid'
-                      ? "flex items-center justify-center bg-gray-50 aspect-[4/3] w-full"
-                      : "flex-shrink-0 flex items-center justify-center p-4 md:p-6 w-full md:w-1/3 bg-gray-50"
-                  }
-                  style={view === 'grid' ? { minHeight: 180 } : {}}
-                >
-                  <img
-                    src={product.photo}
-                    alt={product.name}
-                    className={
-                      view === 'grid'
-                        ? "object-contain w-full h-full max-h-48"
-                        : "w-full h-full object-cover rounded-md"
-                    }
-                  />
-                </div>
-                {/* Product Info & Price Comparison */}
-                <div className="flex-1 p-4 md:p-6 flex flex-col justify-between">
-                  <div>
-                    <h3 className="font-bold text-gray-700 text-base">{product.name}</h3>
-                    <div className="text-xs text-gray-400 mb-2">{product.category}</div>
-                    <p className="text-xs text-gray-500 mb-4">{product.description}</p>
-                    <div>
-                      <span className="font-semibold text-gray-700 text-sm">Compare Prices:</span>
-                      <div className="mt-2 flex flex-col gap-2">
-                        {product.prices
-                          .sort((a, b) => parseFloat(a.price) - parseFloat(b.price))
-                          .map((p, idx) => (
-                            <a
-                              key={p.source}
-                              href={p.url}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className={`flex items-center justify-between px-3 py-2 rounded border transition
-                                ${idx === 0 ? "border-orange-400 bg-orange-50 font-bold text-orange-600" : "border-gray-200 bg-gray-50 hover:border-orange-300"}
-                              `}
-                            >
-                              <span className="text-sm">{p.source}</span>
-                              <span className="text-base">{p.currency}{p.price}</span>
-                              <span className="text-xs underline text-blue-500">Go to site</span>
-                            </a>
-                          ))}
-                      </div>
-                    </div>
-                  </div>
-                  {/* Actions */}
-                  <div className="flex gap-2 mt-4">
-                    <button className="p-2 rounded-full border hover:bg-gray-100 text-gray-500" title="Wishlist">
-                      <svg width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                        <path d="M12 21C12 21 4 13.5 4 8.5C4 5.42 6.42 3 9.5 3C11.24 3 12.91 3.81 14 5.08C15.09 3.81 16.76 3 18.5 3C21.58 3 24 5.42 24 8.5C24 13.5 16 21 16 21H12Z" />
-                      </svg>
-                    </button>
-                    <button className="p-2 rounded-full border hover:bg-gray-100 text-gray-500" title="Compare">
-                      <svg width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                        <rect x="2" y="2" width="6" height="20" rx="2" />
-                        <rect x="16" y="2" width="6" height="20" rx="2" />
-                      </svg>
-                    </button>
-                  </div>
-                </div>
-              </div>
+             <GridProductCard key={product.sku} product={product} view={view}/>
             ))}
             {filteredProducts.length === 0 && (
               <div className="col-span-full text-center text-gray-400 py-10">
